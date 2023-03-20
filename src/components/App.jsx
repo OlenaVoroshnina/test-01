@@ -1,22 +1,24 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import storage from 'helpers/storage';
-import { Card } from './App.styled';
 import { Header } from 'components/Header/Header';
 import { Hero } from 'components/Hero/Hero';
 import { Button } from 'components/Button/Button';
 import { Avatar } from 'components/Avatar/Avatar';
 import { Tweets } from 'components/Tweets/Tweets';
-import { Container } from "./App.styled";
+import { Container, Card } from './App.styled';
 
 export const App = () => {
-  
-  const [isFollowing, setIsFollowing] = useState(storage.load('isFollowing') ?? false);
-  const [followers, setFollowers] = useState(storage.load('followers') ?? 100500);
+  const [isFollowing, setIsFollowing] = useState(
+    storage.load('isFollowing') ?? false
+  );
+  const [followers, setFollowers] = useState(
+    storage.load('followers') ?? 100500
+  );
 
   useEffect(() => {
     storage.save('isFollowing', isFollowing);
-    storage.save("followers", followers)
+    storage.save('followers', followers);
   }, [followers, isFollowing]);
 
   const handleButtonClick = () => {
@@ -41,12 +43,17 @@ export const App = () => {
   return (
     <Container>
       <Card>
-        <Header/>
-        <Hero/>
-        <Avatar></Avatar>
-        <Tweets numberOfFollowers = {numberOfFollowers}></Tweets>
-        <Button  onClickButton = {handleButtonClick} isFollowing = {isFollowing}></Button>
+        <Header />
+        <Hero />
+        <Avatar />
+        <Tweets numberOfFollowers={numberOfFollowers} />
+        <Button onClickButton={handleButtonClick} isFollowing={isFollowing} />
       </Card>
     </Container>
   );
+};
+
+App.propTypes = {
+  followers: PropTypes.number,
+  isFollowing: PropTypes.bool,
 };

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const TweetsText = styled.div`
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 `;
 export const FollowersText = styled.div`
-    margin-bottom: 26px;
+  margin-bottom: 26px;
 `;
