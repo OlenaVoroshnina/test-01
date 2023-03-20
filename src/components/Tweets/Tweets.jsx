@@ -1,11 +1,11 @@
 import { TweetsText, FollowersText } from "./Tweets.styled";
 
-export const Tweets = () => {
+export const Tweets = ({numberOfFollowers}) => {
   return (
     <>
         <TweetsText> 777 tweets</TweetsText>
         <FollowersText>
-            <span>100,500 </span>
+            <span>{numberOfFollowers} </span>
             Followers 
         </FollowersText>
     </>
